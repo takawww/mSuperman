@@ -26,7 +26,7 @@
 	document.addEventListener("deviceready", onDeviceReady, false);
 	 
 	function onDeviceReady() {
-		FastClick.attach(document.body);
+		
 	}
 	</script>
 </head>
@@ -64,7 +64,7 @@
 
 				this.canvas.addEventListener('touchstart', touchStart, false);
 				this.canvas.addEventListener('touchend', touchEnd, false);
-
+				FastClick.attach(this.canvas);
 				},
 			clear : function() {
 				this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
@@ -159,7 +159,6 @@
 		}
 
 		function accelerate(n) {
-			console.log("aaa");
 			myGamePiece.gravity = n;
 		}
 	</script>

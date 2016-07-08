@@ -22,6 +22,13 @@
 			background-color: #f1f1f1;
 		}
 	</style>
+	<script type="text/javascript">
+	document.addEventListener("deviceready", onDeviceReady, false);
+	 
+	function onDeviceReady() {
+		FastClick.attach(document.body);
+	}
+	</script>
 </head>
 <body onload="startGame()">
 	<script>
@@ -39,7 +46,6 @@
 		}
 
 		function startGame() {
-			FastClick.attach(document.body);
 			myGamePiece = new component(30, 30, "red", 10, 120);
 			myGamePiece.gravity = 0.05;
 			myScore = new component("30px", "Consolas", "black", 20, 40, "text");

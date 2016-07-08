@@ -60,7 +60,7 @@
 				this.context = this.canvas.getContext("2d");
 				document.body.insertBefore(this.canvas, document.body.childNodes[0]);
 				this.frameNo = 0;
-				this.interval = setInterval(updateGameArea, 20);
+				if (!this.interval) this.interval = setInterval(updateGameArea, 20);				
 
 				this.canvas.addEventListener('touchstart', touchStart, false);
 				this.canvas.addEventListener('touchend', touchEnd, false);
@@ -147,7 +147,7 @@
 				myObstacles[i].x += -1;
 				myObstacles[i].update();
 			}
-			myScore.text="SCORE: " + myGameArea.frameNo + "/" + myGamePiece.gravity;
+			myScore.text="SCORE: " + myGameArea.frameNo;
 			myScore.update();
 			myGamePiece.newPos();
 			myGamePiece.update();
@@ -161,6 +161,17 @@
 		function accelerate(n) {
 			myGamePiece.gravity = n;
 		}
+
+		function restartGame(){
+			myGameArea.context.clearRect(0, 0, myGameArea.canvas.width, myGameArea.canvas.height);
+			clearInterval(this.interval);
+			myGamePiece = null;
+			myObstacles = [];
+			myScore = 0;
+
+			startGame();
+		}
 	</script>
+	<input type="button" style="width:100%;height:50px;" value="RESTART" onclick="javascript:restartGame()">
 </body>
 </html>
